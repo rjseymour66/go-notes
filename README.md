@@ -12,7 +12,7 @@ Client test files contain the following:
 - The main test method that actually tests your client and methods. Generally, the main test method does the following:
   1. Start the test server that you just created
   2. defer the Close() for the test server
-  3. Create any clients and make any calls that you plan to test.
+  3. Create any clients and make any calls that you plan to test
   4. Check the expected value vs the actual returned value (got)
 
 ```golang
@@ -52,14 +52,14 @@ The following methods are useful:
 
 ## Command line tools
 
-# Print(x) functions
+# [x]Print[x] functions
 
 I always get these simple fmt.PrintSomething() functions confused. Here is a cheatsheet:
 
 ```go
 fmt.Errorf("Custom formatted error messages: %s", err)
 fmt.Fprintf(writer, "Writes this formatted string to the writer: %s", text)
-formattedStr := fmt.Sprintf("Returns a formatted string: %s", text)
+fStr := fmt.Sprintf("Returns a formatted string: %s", text)
 ```
 
 ## Errors
