@@ -6,10 +6,17 @@ You do not want to use the default client in the golang http package because you
 
 ## Testing the client
 
-Use the following structure for a basic client test:
+Client test files contain the following:
+- A method that creates a test server. The method must return an `*httptest.Server` object. To create one, you must run the `httptest.NewServer` function, and pass it an `http.HandlerFunc()` function.
+ `http.HandlerFunc()` accepts an anonymous function that writes the response to the http.ResponseWriter.
+- The main test method that actually tests your client and methods. Generally, the main test method does the following:
+  1. Start the test server that you just created
+  2. defer the Close() for the test server
+  3. Create any clients and make any calls that you plan to test.
+  4. Check the expected value vs the actual returned value (got)
 
 ```golang
-// Create test server
+// test server setup
 func startTestHTTPServer() *httptest.Server {
     testServer := httptest.NewServer (
         http.HandlerFunc(
@@ -19,12 +26,7 @@ func startTestHTTPServer() *httptest.Server {
     return testServer
 }
 
-// Create the main test method and do the following:
-// 1. Start the test server that you just created
-// 2. defer the Close() for the test server
-// 3. Create any clients and make any calls that you plan to test.
-// 4. Check the expected value vs the actual returned value (got)
-
+// main test method
 func TestXXXX(t *testing.T) {
     ts := startTestHTTPServer()
     defer ts.Close()
