@@ -52,4 +52,14 @@ The following methods are useful:
 
 ## Command line tools
 
-# Print(x) statements
+# Print(x) functions
+
+I always get these simple fmt.PrintSomething() functions confused. Here is a cheatsheet:
+
+```go
+fmt.Errorf("Custom formatted error messages: %s", err)
+fmt.Fprintf(writer, "Writes this formatted string to the writer: %s", text)
+formattedStr := fmt.Sprintf("Returns a formatted string: %s", text)
+```
+
+## Errors
