@@ -31,7 +31,8 @@ func TestXXXX(t *testing.T) {
     ts := startTestHTTPServer()
     defer ts.Close()
 
-    expected := // values that you want to test for
+    expected := // values written to the w in the body 
+                // of the testServer HandlerFunc()
     client := // client constructor
     resp, err := // client method call
 
