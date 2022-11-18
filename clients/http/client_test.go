@@ -21,11 +21,11 @@ func TestTimeoutClient(t *testing.T) {
 	ts := startTestHTTPServer()
 	defer ts.Close()
 
-	testClient := TimeoutClient(5 * time.Second)
+	client := TimeoutClient(5 * time.Second)
+	got, err := FetchData(client, ts.URL)
 
 	expected := "You passed the test!"
 
-	got, err := testClient.Get(ts.URL)
 	if err != nil {
 		t.Fatal(err)
 	}
